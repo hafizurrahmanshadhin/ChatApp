@@ -51,7 +51,7 @@ class ChatComponent extends Component {
         $this->message = '';
     }
 
-    #[On('echo-private:chat-channel.{sender_id},MessageSendEvent')]
+    #[On('echo-channel:chat-channel.{sender_id},MessageSendEvent')]
     public function listenForMessage($event) {
         $chatMessage = Message::whereId($event['message']['id'])
             ->with('sender:id,name', 'receiver:id,name')
